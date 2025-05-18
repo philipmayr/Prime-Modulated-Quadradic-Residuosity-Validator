@@ -8,17 +8,17 @@ def exponentiate_modularly(base, index, modulus)
     if base == 0
         return 0
     end
-        
+    
     while index > 0
         if index & 1 == 1
             residue = (residue * base) % modulus
         end
-            
+        
         base = (base * base) % modulus
         index >>= 1
     end
     
-    return residue;   
+    return residue;
 end
 
 def decide_quadradic_residuosity(quadratic_residue_candidate, prime)
@@ -26,7 +26,7 @@ def decide_quadradic_residuosity(quadratic_residue_candidate, prime)
     congruence = exponentiate_modularly(quadratic_residue_candidate, index, prime)
     
     if congruence == 1
-        return true 
+        return true
     else 
         return false
     end
@@ -34,7 +34,7 @@ end
 
 loop do
     # get prime modulus
-    print "Enter a prime number modulus: "
+    print "Enter a prime modulus: "
     prime = gets.to_i
     
     # get quadradic residue candidate
@@ -49,6 +49,6 @@ loop do
     else
         puts quadratic_residue_candidate.to_s + " is a quadradic nonresidue modulo " + prime.to_s + "."
     end
-
+    
     puts
 end
