@@ -1,4 +1,4 @@
-# Prime Modulus Quadradic Residuosity Decider Algorithm
+# Prime Modulus Quadradic Residuosity Decider
 
 def exponentiate_modularly(base, index, modulus)
     residue = 1
