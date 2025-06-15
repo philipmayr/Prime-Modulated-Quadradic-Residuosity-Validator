@@ -1,4 +1,4 @@
-# Prime Modulus Quadradic Residuosity Decider
+# Prime Modulated Quadradic Residuosity Validator
 
 def exponentiate_modularly(base, index, modulus)
     residue = 1
@@ -21,9 +21,9 @@ def exponentiate_modularly(base, index, modulus)
     return residue;
 end
 
-def decide_quadradic_residuosity(quadratic_residue_candidate, prime)
-    index = (prime - 1) / 2
-    congruence = exponentiate_modularly(quadratic_residue_candidate, index, prime)
+def validate_quadradic_residuosity(quadratic_residue_candidate, prime_modulus)
+    index = (prime_modulus - 1) / 2
+    congruence = exponentiate_modularly(quadratic_residue_candidate, index, prime_modulus)
     
     if congruence == 1
         return true
@@ -35,19 +35,20 @@ end
 loop do
     # get prime modulus
     print "Enter a prime modulus: "
-    prime = gets.to_i
+    prime_modulus = gets.to_i
     
     # get quadradic residue candidate
-    print "Enter a quadradic residue candidate modulo " + prime.to_s + ": "
+    print "Enter a quadradic residue candidate modulo " + prime_modulus.to_s + ": "
     quadratic_residue_candidate = gets.to_i
     
     puts
     
-    if decide_quadradic_residuosity(quadratic_residue_candidate, prime)
+    if validate_quadradic_residuosity(quadratic_residue_candidate, prime_modulus)
         quadratic_residue = quadratic_residue_candidate
-        puts quadratic_residue.to_s + " is a quadradic residue modulo " + prime.to_s + "."
+        puts quadratic_residue.to_s + " is a quadradic residue modulo " + prime_modulus.to_s + "."
     else
-        puts quadratic_residue_candidate.to_s + " is a quadradic nonresidue modulo " + prime.to_s + "."
+        quadratic_nonresidue = quadratic_residue_candidate
+        puts quadratic_nonresidue.to_s + " is a quadradic nonresidue modulo " + prime_modulus.to_s + "."
     end
     
     puts
